@@ -1,0 +1,23 @@
+.ljMonthPicker {
+	width: 200px;
+}
+.ljMonthPicker .ljMonthPickerHead {
+	width: 100%;
+}
+.ljMonthPicker .ljMonthPickerHead .previous, .ljMonthPicker .ljMonthPickerHead span, .ljMonthPicker .ljMonthPickerHead .next {
+	float: left;
+	cursor: pointer;
+}
+.ljMonthPicker .ljMonthBtn {
+	float: left;
+	width: 60px;
+	color: #888;
+	background: #fff;
+	cursor: pointer;
+}
+.ljMonthPicker .ljMonthBtn.disabled {
+	color: gray;
+}
+.ljMonthPicker .ljMonthBtn.selected {
+	background: orange;
+}
