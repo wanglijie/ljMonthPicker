@@ -1,5 +1,5 @@
 /**
- *    Month picker plugin by Lijie
+ *    Month picker plugin v0.1.1 by Lijie
  *    Build upon jQuery1.6+
  */
 
@@ -49,7 +49,7 @@
 
 		var setValue = function (newYearMonth) {
 			var $monthBtns = $ljPicker.find('.ljMonthBtn').removeClass('selected'),
-				$yeanSpan = $ljPicker.find('.ljMonthPickerHead span'),
+				$yeanSpan = $ljPicker.find('.ljMonthPickerHead .current'),
 				$prevBtn = $ljPicker.find('.previous'),
 				$nextBtn = $ljPicker.find('.next'),
 				newYear = newYearMonth[0],
@@ -70,7 +70,7 @@
 		var bindPickerEvent = function () {
 			var $prevBtn = $ljPicker.find('.previous'),
 				$nextBtn = $ljPicker.find('.next'),
-				$yeanSpan = $ljPicker.find('.ljMonthPickerHead span'),
+				$yeanSpan = $ljPicker.find('.ljMonthPickerHead .current'),
 				$monthBtns = $ljPicker.find('.ljMonthBtn');
 
 			$prevBtn.on('click', function () {
@@ -82,6 +82,7 @@
 					setValue([newYear, 0]);
 					customizePickerMonth([newYear, 0]);
 				}
+				return false;
 			});
 
 			$nextBtn.on('click', function () {
@@ -93,17 +94,19 @@
 					setValue([newYear, 0]);
 					customizePickerMonth([newYear, 0]);
 				}
+				return false;
 			});
 
 			$monthBtns.on('click', function () {
 				if ($(this).hasClass('disabled')) {
 					return false;
 				} else {
-					var selectedYear = $ljPicker.find('.ljMonthPickerHead span').text();
+					var selectedYear = $ljPicker.find('.ljMonthPickerHead .current').text();
 					var selectedMonth = $monthBtns.index($(this)) + 1;
 					$ljInput.val(selectedYear + ' - ' + selectedMonth);
 					closeMonthPicker();
 				}
+				return false;
 			});
 		};
 
@@ -123,12 +126,12 @@
 				// generate picker dom if not exists
 				var monthHtmls = [];
 				for (var i = 0; i < 12; i++) {
-					monthHtmls.push('<div class="ljMonthBtn">'+ljOptions.longMonths[i]+'</div>');
+					monthHtmls.push('<div class="ljMonthBtn">'+ljOptions.shortMonths[i]+'</div>');
 				}
 				var monthHtml = monthHtmls.join('');
 				var ljMonthPickerHtmls = [
 					'<div class="'+ljPickerClass+'">',
-						'<div class="ljMonthPickerHead"><div class="previous">Previous</div><span></span><div class="next">Next</div></div>',
+						'<div class="ljMonthPickerHead"><div class="previous"><i></i></div><div class="current"></div><div class="next"><i></i></div></div>',
 						'<div style="clear: both"></div>',
 						monthHtml,
 					'</div>'
@@ -166,13 +169,14 @@
 		if (ljOptions.toggleOnImg) {
 			$ljInput.on('click', 'img', function () {
 				triggerMonthPicker();
+				return false;
 			});
 		} else {
 			$ljInput.on('click', function () {
 				triggerMonthPicker();
+				return false;
 			});
 		}
-		
 
 		return $ljInput;
 
