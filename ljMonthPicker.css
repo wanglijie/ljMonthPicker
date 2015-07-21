@@ -1,23 +1,68 @@
 .ljMonthPicker {
 	width: 200px;
+	text-align: center;
+	border: 1px solid #ddd;
+	background: #fff;
 }
 .ljMonthPicker .ljMonthPickerHead {
-	width: 100%;
+	width: 90%;
+	height: 30px;
+	font: 12px/30px arial;
+	margin: 0 5%;
+	border-bottom: 1px solid #ddd;
 }
-.ljMonthPicker .ljMonthPickerHead .previous, .ljMonthPicker .ljMonthPickerHead span, .ljMonthPicker .ljMonthPickerHead .next {
+.ljMonthPicker .ljMonthPickerHead .previous, .ljMonthPicker .ljMonthPickerHead .current, .ljMonthPicker .ljMonthPickerHead .next {
 	float: left;
+	outline: none;
+}
+.ljMonthPicker .ljMonthPickerHead .previous, .ljMonthPicker .ljMonthPickerHead .next {
+	width: 25%;
 	cursor: pointer;
+}
+.ljMonthPicker .ljMonthPickerHead .previous.disabled, .ljMonthPicker .ljMonthPickerHead .next.disabled {
+	opacity: 0.2;
+	cursor: default;
+}
+.ljMonthPicker .ljMonthPickerHead .previous i {
+	background-image: url("Left Arrow.jpg");
+	width: 24px;
+	background-repeat: no-repeat;
+	float: right;
+	height: 24px;
+	margin-top: 3px;
+}
+.ljMonthPicker .ljMonthPickerHead .next i {
+	background-image: url('Right Arrow.jpg');
+	width: 24px;
+	background-repeat: no-repeat;
+	float: left;
+	height: 24px;
+	margin-top: 3px;
+}
+.ljMonthPicker .ljMonthPickerHead .current {
+	width: 50%;
 }
 .ljMonthPicker .ljMonthBtn {
 	float: left;
 	width: 60px;
-	color: #888;
-	background: #fff;
+	color: #000;
 	cursor: pointer;
+	background: #FFF none repeat scroll 0% 0%;
+	margin: 3px;
+	font: 12px/30px arial;
+	height: 30px;
 }
+
+.ljMonthPicker .ljMonthBtn:hover {
+	background: #E2F2FF;
+}
+
 .ljMonthPicker .ljMonthBtn.disabled {
-	color: gray;
+	opacity: 0.2;
+    cursor: default;
+	background: #fff;
 }
 .ljMonthPicker .ljMonthBtn.selected {
-	background: orange;
+	background: #00ADEE;
+	color: #fff;
 }
